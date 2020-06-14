@@ -8,7 +8,7 @@
             {% block base_head %}{% endblock %}
         </head>
         <body>
-            {% include 'base/navbar.html' %}
+            {% include 'base/navbar.html' with brand_name='Edward Kolodziejski' %}
             {% block content %} {% endblock %}
 
             {% include 'base/js.html' %}
