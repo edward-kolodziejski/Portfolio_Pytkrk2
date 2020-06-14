@@ -1,3 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class='text-center'>
+    <h1>{{ title }}</h1>
+    <h2>We are working.</h2>
+</div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <p>
+                    {{ content }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
 <!doctype html>
     <html lang="en">
     <head>
@@ -10,17 +31,7 @@
         <title>Hello, world!</title>
     </head>
     <body>
-        <div class='text-center'>
-        <h1>{{ title }}</h1>
-        <h2>We are working.</h2>
-        </div>
-        <div class='container'>
-            <div class='row'>
-                <div class=col'>
-                    <p>{{ content }}</p>
-                </div>
-            </div>
-        </div>
+        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
