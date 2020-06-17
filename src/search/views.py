@@ -18,7 +18,4 @@ class SearchProductView(ListView):
         if query is not None:
             return Product.objects.search(query)
         return Product.objects.featured()
-        '''
-        __icontains = field contains X
-        __iexact = fields is exactly X
-        '''
+     
