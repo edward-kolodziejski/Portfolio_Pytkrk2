@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
     'carts',
     'orders',
     'products',
@@ -54,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+LOGOUT_REDIRECT_URL = '/login/'
 ROOT_URLCONF = 'portfolio.urls'
 
 TEMPLATES = [
