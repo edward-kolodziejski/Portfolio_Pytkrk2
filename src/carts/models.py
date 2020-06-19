@@ -19,7 +19,7 @@ class CartManager(models.Manager):
                 cart_obj.save()
         else:
             cart_obj = Cart.objects.new(user=request.user)
-            new_object = True
+            new_obj = True
             request.session['cart_id'] = cart_obj.id
         return cart_obj, new_obj
 
@@ -43,9 +43,22 @@ class Cart(models.Model):
 def __str__(self):
     return str(self.id)
 
+def m2m_changed_cart_receiver(sender, instance, action, *args, **kwargs):
+    if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
+        products = instance.products.all()
+        total = 0
+        for x in products:
+            total += x.price
+        if instance.subtotal != total:
+            instance.subtotal = total
+            instance.save()
+
+m2m_changed.connect(m2m_changed_cart_receiver, sender=Cart.products.through)
+
+
 def pre_save_cart_receiver(sender, instance, *args, **kwargs):
     if instance.subtotal > 0:
-        instance.total = Decimal(instance.subtotal) 
+        instance.total = Decimal(instance.subtotal) * Decimal(1.23) # 23% tax
     else:
         instance.total = 0.00
 
